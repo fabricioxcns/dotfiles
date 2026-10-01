@@ -1,0 +1,67 @@
+# Starship: prompt estilo Dracula
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newline = true
+palette = "dracula"
+
+# Ordem dos blocos: pasta, git, linguagens, tempo do comando e, na linha de baixo, a seta
+format = """
+$directory$git_branch$git_status$nodejs$java$python$cmd_duration
+$character"""
+
+[palettes.dracula]
+foreground = "#f8f8f2"
+comment = "#6272a4"
+cyan = "#8be9fd"
+green = "#50fa7b"
+orange = "#ffb86c"
+pink = "#ff79c6"
+purple = "#bd93f9"
+red = "#ff5555"
+yellow = "#f1fa8c"
+
+# Pasta atual (mostra só as 3 últimas)
+[directory]
+style = "bold cyan"
+truncation_length = 3
+truncation_symbol = "…/"
+
+# Branch do Git
+[git_branch]
+symbol = "⎇ "
+style = "bold purple"
+format = "on [$symbol$branch]($style) "
+
+# Arquivos modificados, novos, commits para enviar etc.
+[git_status]
+style = "bold red"
+
+# Versão do Node quando houver package.json
+[nodejs]
+symbol = "⬢ "
+style = "bold green"
+format = "via [$symbol$version]($style) "
+
+# Versão do Java quando houver projeto Java
+[java]
+symbol = "☕ "
+style = "bold orange"
+format = "via [$symbol$version]($style) "
+
+# Versão do Python quando houver projeto Python
+[python]
+symbol = "py "
+style = "bold yellow"
+format = "via [$symbol$version]($style) "
+
+# Mostra quanto tempo levou um comando demorado (mais de 2s)
+[cmd_duration]
+min_time = 2000
+style = "bold yellow"
+format = "took [$duration]($style) "
+
+# A seta: roxa quando o último comando deu certo, vermelha quando deu erro
+[character]
+success_symbol = "[❯](bold purple)"
+error_symbol = "[❯](bold red)"
+
